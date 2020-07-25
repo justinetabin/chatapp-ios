@@ -12,9 +12,9 @@ import RxSwift
 import RxCocoa
 
 class BaseViewController<ViewModel: BaseViewModel>: UIViewController {
-    var factory: ViewControllerFactory
-    var viewModel: ViewModel
-    var disposeBag = DisposeBag()
+    let factory: ViewControllerFactory
+    let viewModel: ViewModel
+    let disposeBag = DisposeBag()
     let keyboardDismissTap = UITapGestureRecognizer()
     
     fileprivate func setupDismissKeyboard() {
@@ -81,6 +81,8 @@ class BaseViewController<ViewModel: BaseViewModel>: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.view.backgroundColor = UIColor.systemBackground
+        self.setupKeyboardObservers()
+        self.setupDismissKeyboard()
     }
     
     required init?(coder: NSCoder) {

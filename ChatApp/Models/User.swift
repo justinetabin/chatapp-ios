@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Hashable {
     var _id: String
     var username: String
-    var password: String
+    var password: String?
     var createdAt: String
     var updatedAt: String
 }

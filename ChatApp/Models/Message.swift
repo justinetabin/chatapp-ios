@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Message: Codable {
+struct Message: Codable, Hashable {
     var _id: String
     var localId: String
     var message: String
@@ -16,5 +16,11 @@ struct Message: Codable {
     var createdAt: String
     var updatedAt: String
     var sender: User
+    var delivery: MessageDelivery? = .sent
 }
 
+enum MessageDelivery: Int, Codable {
+    case sent = 0
+    case sending
+    case failed
+}
